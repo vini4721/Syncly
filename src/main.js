@@ -1,38 +1,42 @@
 import "./styles/style.css";
-import {supabase} from "./supabase.js";
+import { supabase } from "./supabase.js";
 
 let isSignUpMode = false;
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("auth-form");
-  form.addEventListener("submit", async function(e) {
+  form.addEventListener("submit", async function (e) {
     e.preventDefault();
-    
+
     const email = document.querySelector("#email").value;
     const pass = document.querySelector("#password").value;
-    
-    if(isSignUpMode) {
-      const result = await supabase.auth.signUp({email: email, password: pass});
-      
-      if(result.error) {
-        console.log("Error", result.error.message);
-      }
-      else{
-        console.log("Success! Redirecting...");
-        window.location.href = "../dashboard.html";
-      }
-    }
-    else{
-      const result = await supabase.auth.signInWithPassword({email: email, password: pass});
-      
+
+    if (isSignUpMode) {
+      const result = await supabase.auth.signUp({
+        email: email,
+        password: pass,
+      });
+
       if (result.error) {
         console.log("Error", result.error.message);
       } else {
         console.log("Success! Redirecting...");
-        window.location.href = "../dashboard.html";
+        window.location.href = "dashboard.html";
+      }
+    } else {
+      const result = await supabase.auth.signInWithPassword({
+        email: email,
+        password: pass,
+      });
+
+      if (result.error) {
+        console.log("Error", result.error.message);
+      } else {
+        console.log("Success! Redirecting...");
+        window.location.href = "dashboard.html";
       }
     }
-  })
+  });
 
   document.querySelector("#toggle-btn").addEventListener("click", function () {
     isSignUpMode = !isSignUpMode;
@@ -43,13 +47,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const checkAcc = document.querySelector("#toggle-text");
     const toggleBtn = document.querySelector("#toggle-btn");
 
-    if(isSignUpMode) {
+    if (isSignUpMode) {
       title.innerText = "Sign Up";
       subtitle.innerText = "Create a new account";
       submitBtn.innerText = "Sign Up";
       checkAcc.innerText = "Already have an account ?";
       toggleBtn.innerText = "Sign In";
-    }else {
+    } else {
       title.innerText = "Sign In";
       subtitle.innerText = "Welcome back to Syncly";
       submitBtn.innerText = "Sign In";
@@ -57,4 +61,4 @@ document.addEventListener("DOMContentLoaded", function() {
       toggleBtn.innerText = "Sign Up";
     }
   });
-})
+});
