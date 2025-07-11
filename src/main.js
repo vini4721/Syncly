@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Error", result.error.message);
       } else {
         console.log("Success! Redirecting...");
-        window.location.href = "dashboard.html";
+        alert("Account created ✅ verify your email");
       }
     } else {
       const result = await supabase.auth.signInWithPassword({
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       if (result.error) {
-        console.log("Error", result.error.message);
+        alert("No account exists ❌");
       } else {
         console.log("Success! Redirecting...");
         window.location.href = "dashboard.html";
