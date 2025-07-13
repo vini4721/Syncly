@@ -6,10 +6,13 @@ let isSignUpMode = false;
 document.addEventListener("DOMContentLoaded", function () {
   // Handle email confirmation
   const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('type') === 'signup' || window.location.hash.includes('access_token')) {
-    console.log('Email confirmed! Redirecting to dashboard...');
+  if (
+    urlParams.get("type") === "signup" ||
+    window.location.hash.includes("access_token")
+  ) {
+    console.log("Email confirmed! Redirecting to dashboard...");
     setTimeout(() => {
-      window.location.href = './dashboard.html';
+      window.location.href = "./dashboard.html";
     }, 2000);
     return;
   }
@@ -43,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("No account exists ❌");
       } else {
         console.log("Success! Redirecting...");
-        window.location.href = "./dashboard.html";
+        window.location.href = "/dashboard.html";
       }
     }
   });

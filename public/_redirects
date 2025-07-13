@@ -1,7 +1,7 @@
 # Netlify redirects file
-/dashboard /dashboard.html 200
-/editor /editor.html 200
 /dashboard.html /dashboard.html 200
 /editor.html /editor.html 200
+/dashboard /dashboard.html 200
+/editor /editor.html 200
 /auth/callback /index.html 200
-/* /index.html 200
+/*  /index.html 200
