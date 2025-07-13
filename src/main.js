@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("No account exists ❌");
       } else {
         console.log("Success! Redirecting...");
-        window.location.href = "dashboard.html";
+        window.location.href = "/dashboard.html";
       }
     }
   });
